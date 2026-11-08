@@ -1,0 +1,28 @@
+---
+import SMSLayout from '../../../layouts/JenkinsSMSLayout.astro';
+---
+<SMSLayout title="SMS Opt-In" description="Request JenkinsHQ support and optionally opt in to transactional SMS messages.">
+<p class="overline">Optional text notifications</p>
+<h1>JenkinsHQ customer support & SMS opt-in</h1>
+<p>Contact JenkinsHQ about a service request, order, appointment, or support issue. You may separately opt in to non-marketing text updates. SMS consent is not required to submit this form or purchase a service.</p>
+<form name="jenkinshq-sms-optin" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/jenkinshq/sms/thanks">
+  <input type="hidden" name="form-name" value="jenkinshq-sms-optin"/>
+  <input type="hidden" name="consent-language-version" value="jenkinshq-transactional-v1-2026-11-07"/>
+  <p style="display:none"><label>Leave blank <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
+  <div class="panel">
+    <label for="customer-name">Full name</label><input id="customer-name" name="name" autocomplete="name" maxlength="120" required/>
+    <label for="customer-email">Email address</label><input id="customer-email" type="email" name="email" autocomplete="email" maxlength="254" required/>
+    <label for="customer-phone">US mobile phone number (required only if opting in to SMS)</label><input id="customer-phone" type="tel" name="phone" autocomplete="tel" inputmode="tel" placeholder="+1 212 555 0123"/>
+    <label for="customer-request">What can we help you with?</label><textarea id="customer-request" name="request" rows="4" maxlength="2500" required></textarea>
+    <fieldset><legend>Optional SMS consent</legend>
+      <label class="checkbox" for="customer-optin"><input id="customer-optin" type="checkbox" name="sms_opt_in" value="yes"/><span>I agree to receive recurring, non-marketing text messages from <strong>JenkinsHQ</strong> about my service requests, order and fulfillment updates, appointment reminders, and customer support inquiries. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for assistance. Consent is not a condition of purchase. See the <a href="/jenkinshq/privacy">Privacy Policy</a> and <a href="/jenkinshq/terms">Terms & Conditions</a>.</span></label>
+    </fieldset>
+    <p id="phone-error" hidden role="alert">Enter a valid 10-digit US mobile number to opt in to SMS.</p>
+    <button type="submit">Send request</button>
+    <p class="muted">You can send your request without checking the SMS opt-in box. Support: <a href="mailto:Jeremi.Jenkins@gmail.com">Jeremi.Jenkins@gmail.com</a>.</p>
+  </div>
+</form>
+<script>
+const form=document.querySelector('form');form?.addEventListener('submit',(event)=>{const checked=document.querySelector<HTMLInputElement>('#customer-optin')?.checked;const phone=document.querySelector<HTMLInputElement>('#customer-phone');const error=document.getElementById('phone-error');const digits=(phone?.value||'').replace(/\D/g,'');const valid=digits.length===10||(digits.length===11&&digits.startsWith('1'));if(checked&&!valid){event.preventDefault();if(error)error.hidden=false;phone?.focus();}else if(error){error.hidden=true;}});
+</script>
+</SMSLayout>
