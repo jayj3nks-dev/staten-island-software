@@ -1,5 +1,5 @@
 ---
-import { siteConfig, hasEmail, hasPhone, hasGitHub, hasFiverr, hasLinkedIn } from '../config/site';
+import { siteConfig, hasEmail, hasPhone, hasGitHub, hasFiverr, hasLinkedIn, hasOwnerLogin } from '../config/site';
 
 const currentYear = new Date().getFullYear();
 ---
@@ -131,6 +131,19 @@ const currentYear = new Date().getFullYear();
         <a href="/privacy">Privacy Policy</a>
         <span class="separator" aria-hidden="true">•</span>
         <a href="/terms">Terms of Use</a>
+        {hasOwnerLogin && (
+          <>
+            <span class="separator" aria-hidden="true">•</span>
+            <a
+              href={siteConfig.ownerLoginUrl}
+              id="footer-owner-login"
+              class="owner-login-link"
+              rel="noopener noreferrer"
+            >
+              Owner Login
+            </a>
+          </>
+        )}
       </div>
     </div>
   </div>
