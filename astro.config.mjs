@@ -6,7 +6,11 @@ import { siteConfig } from './src/config/site.ts';
 export default defineConfig({
   site: siteConfig.canonicalUrl,
   output: 'static',
-  integrations: [sitemap()],
+  integrations: [
+    sitemap({
+      filter: (page) => !/\/office\/?$/.test(page),
+    }),
+  ],
   compressHTML: true,
   build: {
     format: 'directory'

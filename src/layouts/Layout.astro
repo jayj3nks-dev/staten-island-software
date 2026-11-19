@@ -9,6 +9,7 @@ interface Props {
   title?: string;
   description?: string;
   canonical?: string;
+  noindex?: boolean;
   serviceData?: {
     name: string;
     description: string;
@@ -20,6 +21,7 @@ const {
   title = `${siteConfig.businessName} | Custom Software, Websites & Automation`,
   description = 'Custom software engineering, websites, automation, integrations and technical solutions for Staten Island, NYC and remote clients.',
   canonical,
+  noindex = false,
   serviceData
 } = Astro.props;
 
@@ -35,7 +37,9 @@ const gscToken = siteConfig.googleSearchConsoleVerification || import.meta.env.P
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, nofollow" />}
     <link rel="canonical" href={canonicalUrl} />
+    <slot name="head" />
 
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website" />

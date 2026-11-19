@@ -1,0 +1,101 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { siteConfig, hasOwnerLogin } from '../config/site';
+
+const title = `Owner Office Access | ${siteConfig.businessName}`;
+const description = 'Private owner access gateway for Staten Island Software / Jenkins HQ.';
+const targetLoginUrl = hasOwnerLogin ? siteConfig.ownerLoginUrl : '';
+---
+
+<Layout title={title} description={description} noindex={true}>
+  {hasOwnerLogin && (
+    <meta slot="head" http-equiv="refresh" content={`0;url=${targetLoginUrl}`} />
+  )}
+
+  <section class="section office-gate-section">
+    <div class="container text-center">
+      <div class="office-gate-card card">
+        <div class="office-gate-badge">
+          <span class="badge badge-blue">Zero-Trust Owner Portal</span>
+        </div>
+
+        {hasOwnerLogin ? (
+          <>
+            <h1>Redirecting to Jenkins HQ Living Office</h1>
+            <p class="office-gate-message">
+              Forwarding you to the Cloudflare Zero Trust Owner Access Gate. Authentication requires your allowlisted owner identity, Owner API Key, and 6-digit TOTP MFA code.
+            </p>
+            <div class="office-gate-actions">
+              <a
+                id="office-login-redirect"
+                href={targetLoginUrl}
+                class="btn btn-primary btn-lg"
+                rel="noopener noreferrer"
+              >
+                Continue to Owner Login
+              </a>
+              <a href="/" class="btn btn-secondary btn-lg">
+                Return to Homepage
+              </a>
+            </div>
+            <script is:inline define:vars={{ targetLoginUrl }}>
+              if (targetLoginUrl) {
+                window.location.replace(targetLoginUrl);
+              }
+            </script>
+          </>
+        ) : (
+          <>
+            <h1>Restricted Owner Access</h1>
+            <p class="office-gate-message">
+              Remote Zero-Trust Owner Login is not yet enabled on this deployment. Once Cloudflare Zero Trust Access is configured and <code>PUBLIC_JENKINS_HQ_OWNER_LOGIN_URL</code> is set in Netlify, this route will redirect directly to the authenticated Living Office gate.
+            </p>
+            <div class="office-gate-actions">
+              <a href="/" class="btn btn-primary btn-lg">
+                Return to Homepage
+              </a>
+            </div>
+          </>
+        )}
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .office-gate-section {
+    padding-top: 5rem;
+    padding-bottom: 5rem;
+  }
+
+  .office-gate-card {
+    max-width: 620px;
+    margin: 0 auto;
+    padding: 3.5rem 2.5rem;
+    text-align: center;
+    background: var(--bg-surface);
+  }
+
+  .office-gate-badge {
+    margin-bottom: 1.5rem;
+  }
+
+  .office-gate-card h1 {
+    font-size: 1.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .office-gate-message {
+    font-size: 1rem;
+    color: var(--text-secondary);
+    line-height: 1.6;
+    margin-bottom: 2rem;
+  }
+
+  .office-gate-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    flex-wrap: wrap;
+  }
+</style>
