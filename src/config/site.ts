@@ -62,17 +62,17 @@ export function resolveVerifiedOwnerLoginUrl(
     typeof previewModeOverride === 'boolean'
       ? previewModeOverride
       : import.meta.env.PUBLIC_JENKINS_HQ_PREVIEW_MODE === 'true' ||
-        (typeof process !== 'undefined' &&
-          Boolean(process.env) &&
-          process.env.PUBLIC_JENKINS_HQ_PREVIEW_MODE === 'true');
+      (typeof process !== 'undefined' &&
+        Boolean(process.env) &&
+        process.env.PUBLIC_JENKINS_HQ_PREVIEW_MODE === 'true');
   const envVal =
     typeof rawUrlOverride === 'string'
       ? rawUrlOverride
       : import.meta.env.PUBLIC_JENKINS_HQ_OWNER_LOGIN_URL ||
-        (typeof process !== 'undefined' && process.env
-          ? process.env.PUBLIC_JENKINS_HQ_OWNER_LOGIN_URL
-          : '') ||
-        '';
+      (typeof process !== 'undefined' && process.env
+        ? process.env.PUBLIC_JENKINS_HQ_OWNER_LOGIN_URL
+        : '') ||
+      '';
   const raw = String(envVal).trim();
   if (!raw || raw.includes('<') || raw.includes('>')) {
     return '';
