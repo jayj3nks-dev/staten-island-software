@@ -1,5 +1,6 @@
 ---
-// ContactForm.astro - Production Netlify-compatible form with interactive validation
+// ContactForm.astro - Production Netlify + Jenkins HQ Backend Consent form with interactive validation
+import { siteConfig } from '../config/site';
 ---
 
 <div class="form-wrapper">
@@ -42,6 +43,8 @@
     <!-- Hidden fields for Netlify Forms & email subject -->
     <input type="hidden" name="form-name" value="project-inquiry" />
     <input type="hidden" name="subject" value="New Staten Island Software project inquiry" />
+    <input type="hidden" name="consent-language-version" value="jenkinshq-signalwire-v2-2026-11-21" />
+    <input type="hidden" id="contact-backend-endpoint" value={siteConfig.smsConsentEndpoint} />
 
     <!-- Spam Protection Honeypot -->
     <p class="hidden-field" style="display:none;" aria-hidden="true">
@@ -214,6 +217,26 @@
         aria-required="true"
       ></textarea>
       <span class="field-error" id="description-error" role="alert" hidden>Please describe your project requirements.</span>
+    </div>
+
+    <!-- Optional Unchecked SMS Consent (CTIA / TCR A2P 10DLC Compliant) -->
+    <div class="form-group sms-consent-box" style="background:rgba(15,23,42,0.55);border:1px solid var(--border-subtle);border-radius:var(--radius-sm);padding:1rem 1.15rem;margin-bottom:1.25rem;">
+      <label class="form-label" style="margin-bottom:0.65rem;display:block;">
+        Optional SMS Notifications <span class="optional-label">(Unchecked by default; not required to submit)</span>
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.84rem;line-height:1.5;color:var(--text-secondary);cursor:pointer;margin-bottom:0.65rem;">
+        <input type="checkbox" id="contact-sms-tx" name="sms_opt_in" value="yes" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;" />
+        <span>
+          I agree to receive recurring customer service, consultation, and order update text messages from <strong>Staten Island Software / Jenkins HQ</strong>. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">SMS Terms</a>.
+        </span>
+      </label>
+      <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.84rem;line-height:1.5;color:var(--text-secondary);cursor:pointer;">
+        <input type="checkbox" id="contact-sms-mkt" name="sms_marketing_opt_in" value="yes" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;" />
+        <span>
+          I separately agree to receive optional promotional and product release text messages from <strong>Staten Island Software / Jenkins HQ</strong> (up to 4 msgs/month). Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Mobile opt-in data is never shared with third parties for marketing.
+        </span>
+      </label>
+      <span class="field-error" id="sms-phone-error" role="alert" hidden>Please enter a valid 10-digit US phone number above if opting in to SMS updates.</span>
     </div>
 
     <!-- Security Warning Notice -->
@@ -476,6 +499,21 @@
         if (descError) descError.setAttribute('hidden', '');
       }
 
+      // Validate Phone when SMS opt-in checkbox is selected
+      const phoneInput = document.getElementById('contact-phone') as HTMLInputElement | null;
+      const smsTx = Boolean((document.getElementById('contact-sms-tx') as HTMLInputElement | null)?.checked);
+      const smsMkt = Boolean((document.getElementById('contact-sms-mkt') as HTMLInputElement | null)?.checked);
+      const smsPhoneError = document.getElementById('sms-phone-error');
+      const phoneDigits = (phoneInput?.value || '').replace(/\D/g, '');
+      const validUsPhone = phoneDigits.length === 10 || (phoneDigits.length === 11 && phoneDigits.startsWith('1'));
+      if ((smsTx || smsMkt) && !validUsPhone) {
+        if (smsPhoneError) smsPhoneError.removeAttribute('hidden');
+        if (!hasError) phoneInput?.focus();
+        hasError = true;
+      } else {
+        if (smsPhoneError) smsPhoneError.setAttribute('hidden', '');
+      }
+
       if (hasError) return;
 
       // Loading state
@@ -486,6 +524,25 @@
 
       try {
         const formData = new FormData(form);
+        const backendUrl = (document.getElementById('contact-backend-endpoint') as HTMLInputElement | null)?.value || '';
+        if (backendUrl && (smsTx || smsMkt)) {
+          fetch(backendUrl, {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              full_name: String(formData.get('name') || ''),
+              email: String(formData.get('email') || ''),
+              business_name: String(formData.get('business') || ''),
+              phone: String(formData.get('phone') || ''),
+              inquiry_notes: String(formData.get('description') || ''),
+              transactional_opt_in: smsTx,
+              marketing_opt_in: smsMkt,
+              consent_source: window.location.href,
+              disclosure_version: String(formData.get('consent-language-version') || 'jenkinshq-signalwire-v2-2026-11-21'),
+              bot_field: String(formData.get('bot-field') || '')
+            })
+          }).catch(() => {});
+        }
         const urlEncoded = new URLSearchParams(formData as any).toString();
 
         const response = await fetch('/', {

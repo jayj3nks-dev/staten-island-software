@@ -1,13 +1,38 @@
 ---
 import SMSLayout from '../../layouts/JenkinsSMSLayout.astro';
+import { siteConfig, hasPhone } from '../../config/site';
 ---
-<SMSLayout title="SMS Terms & Conditions" description="JenkinsHQ text messaging terms, opt-out and support instructions.">
-<p class="overline">JenkinsHQ</p><h1>SMS Terms & Conditions</h1><p class="muted">Last updated November 7, 2026</p>
-<h2>JenkinsHQ customer notification program</h2><p>After voluntarily checking the SMS consent box on the <a href="/jenkinshq/sms">JenkinsHQ web form</a> and providing a valid mobile number, you agree to receive non-marketing SMS notifications from JenkinsHQ about customer service requests, order confirmations and fulfillment updates, appointment reminders, and responses to support inquiries. Consent is not a condition of purchasing goods or services.</p>
-<h2>Frequency and rates</h2><p>Message frequency varies according to your service activity. Message and data rates may apply. Check your mobile plan for rates.</p>
-<h2>Opt out</h2><p>Text <strong>STOP</strong> in response to any JenkinsHQ program text to opt out. You may receive a single confirmation of your opt-out. No further program texts will be sent unless you explicitly opt in again.</p>
-<h2>Help and customer support</h2><p>Text <strong>HELP</strong> for assistance, or email <a href="mailto:Jeremi.Jenkins@gmail.com">Jeremi.Jenkins@gmail.com</a>.</p>
-<h2>Carrier disclaimer</h2><p>Carriers are not liable for delayed or undelivered messages. Delivery depends on your mobile service, connectivity, and participating networks.</p>
-<h2>Privacy</h2><p>Read the <a href="/jenkinshq/privacy">JenkinsHQ Privacy Policy</a> for details on information collected through the SMS program and our commitment not to share mobile opt-in data for third-party marketing.</p>
-<h2>Updates</h2><p>These terms may be revised; updated terms will appear here. Separate agreements may apply to purchased products or services.</p>
+<SMSLayout title="SMS Terms & Conditions" description="Staten Island Software / Jenkins HQ text messaging terms, message frequency, opt-out and support instructions.">
+<p class="overline">Staten Island Software · Jenkins HQ</p>
+<h1>SMS Terms &amp; Conditions</h1>
+<p class="muted">Last updated November 21, 2026</p>
+
+<h2>Program description</h2>
+<p><strong>Staten Island Software / Jenkins HQ</strong> operates an optional SMS/MMS messaging program via SignalWire. On our <a href="/jenkinshq/sms">SMS Opt-In form</a> or <a href="/contact">Contact form</a>, you may separately check one or both optional, unchecked consent boxes:</p>
+<ul>
+  <li><strong>Customer Service &amp; Transactional SMS:</strong> Support responses, order confirmations, digital product fulfillment updates, project consultation coordination, and appointment reminders.</li>
+  <li><strong>Consent-Based Promotional &amp; Product Updates:</strong> Optional announcements regarding new software tools, updates, and promotional offers from Staten Island Software / Jenkins HQ.</li>
+</ul>
+<p><strong>Consent is not a condition of purchasing any goods or services.</strong></p>
+
+<h2>Consent confirmation</h2>
+<p>When you opt in to SMS and our registered carrier campaign is active, you will receive an initial confirmation text message identifying Staten Island Software / Jenkins HQ, confirming your message scope, and reminding you how to request HELP or reply STOP to opt out.</p>
+
+<h2>Message frequency and rates</h2>
+<p>Message frequency varies based on your customer service requests, active orders, or appointments. Optional promotional/marketing updates are limited to no more than 4 messages per month. <strong>Message and data rates may apply.</strong> Please consult your mobile carrier regarding text and data charges.</p>
+
+<h2>Opt-out (STOP) and re-subscribe (START)</h2>
+<p>Reply <strong>STOP</strong> (or STOPALL, UNSUBSCRIBE, CANCEL, END, QUIT) to any text message at any time to opt out. You will receive one final confirmation text confirming your opt-out, and our system will immediately suppress all future SMS/MMS messages across all scopes. Reply <strong>START</strong> at any time if you wish to re-subscribe.</p>
+
+<h2>Help and customer support</h2>
+<p>Reply <strong>HELP</strong> (or INFO) to any text message for assistance, or contact customer support by email at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>{hasPhone ? `, or by business telephone at ${siteConfig.phone}` : ''}.</p>
+
+<h2>Carrier liability disclaimer</h2>
+<p>Wireless carriers (including AT&amp;T, T-Mobile, Verizon, and participating regional carriers) are not liable for delayed or undelivered messages.</p>
+
+<h2>Privacy</h2>
+<p>Read our <a href="/jenkinshq/privacy">SMS Privacy Policy</a> and <a href="/privacy">Site Privacy Policy</a>. We never sell or share mobile numbers or SMS opt-in consent data with third parties or affiliates for marketing or promotional purposes.</p>
+
+<h2>General Terms of Service</h2>
+<p>These SMS Terms supplement our full <a href="/terms">Terms of Service</a>. We may revise these terms from time to time and will update the effective date above.</p>
 </SMSLayout>

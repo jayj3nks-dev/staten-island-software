@@ -17,8 +17,10 @@ export interface SiteConfig {
   ownerName: string;
   ownerTitle: string;
   contactEmail: string;
+  supportEmail: string;
   phone: string;
   phoneRaw: string;
+  smsConsentEndpoint: string;
   githubUrl: string;
   fiverrUrl: string;
   linkedInUrl: string;
@@ -116,8 +118,11 @@ export const siteConfig: SiteConfig = {
   ownerName: 'Jeremi M. Jenkins',
   ownerTitle: 'Software Engineer',
   contactEmail: 'Jeremi.Jenkins@gmail.com',
-  phone: '347-558-7702',
-  phoneRaw: '3475587702',
+  supportEmail: 'jeremi.jenkins+support@gmail.com',
+  // Dedicated SignalWire business phone only (private owner mobile is NEVER published here)
+  phone: '(315) 502-2862',
+  phoneRaw: '+13155022862',
+  smsConsentEndpoint: 'https://vps-32f425d8.vps.ovh.us/api/public/sms-consent',
   githubUrl: 'https://github.com/Jayj3nks',
   fiverrUrl: '',
   linkedInUrl: '',

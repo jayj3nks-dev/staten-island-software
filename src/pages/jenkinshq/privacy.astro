@@ -1,13 +1,31 @@
 ---
 import SMSLayout from '../../layouts/JenkinsSMSLayout.astro';
+import { siteConfig, hasPhone } from '../../config/site';
 ---
-<SMSLayout title="Privacy Policy" description="JenkinsHQ privacy practices and SMS consent handling.">
-<p class="overline">JenkinsHQ</p><h1>Privacy Policy</h1><p class="muted">Last updated November 7, 2026</p>
-<h2>Who this policy applies to</h2><p>This policy covers JenkinsHQ's customer inquiry and transactional SMS notification program hosted at this website. It does not replace the separate privacy policy governing other services offered on this website.</p>
-<h2>Information collected</h2><p>When you voluntarily submit our JenkinsHQ contact form, we collect the name, email address, optional mobile phone number, service request description, and whether you checked the SMS opt-in box. The form also submits a version identifier for the SMS disclosure. Our hosting and messaging providers may process technical and delivery information necessary to operate the service.</p>
-<h2>How information is used</h2><p>We use the information to respond to customer inquiries, provide requested services, process or update relevant customer orders, arrange appointments, and send service-related messages only where messaging consent has been obtained. We may retain consent and opt-out records to help honor your choices and meet legal obligations.</p>
-<h2>Mobile data and consent</h2><p><strong>We do not sell or share mobile numbers, SMS opt-in data, or SMS consent information with third parties or affiliates for their marketing or promotional purposes.</strong> We may use hosting, customer-service, or messaging processors only to deliver the services you request. Text messaging originator opt-in data and consent are not shared with any third parties for their marketing purposes.</p>
-<h2>Your choices</h2><p>SMS opt-in is optional and is not a condition of purchase. Reply STOP to discontinue the JenkinsHQ SMS program or HELP for assistance. You may contact <a href="mailto:Jeremi.Jenkins@gmail.com">Jeremi.Jenkins@gmail.com</a> to request access, correction, or deletion as applicable.</p>
-<h2>Retention and security</h2><p>Information is retained only as needed for service delivery, recordkeeping, consent verification, or legal compliance, subject to applicable requirements. We use reasonable safeguards; no online system can guarantee absolute security.</p>
-<h2>Policy updates and contact</h2><p>We may update this policy to reflect operational or legal changes and will revise the date above. For questions, email <a href="mailto:Jeremi.Jenkins@gmail.com">Jeremi.Jenkins@gmail.com</a> or submit a request through our <a href="/jenkinshq/sms">contact and opt-in form</a>.</p>
+<SMSLayout title="Privacy Policy" description="Staten Island Software / Jenkins HQ privacy practices and SMS consent handling.">
+<p class="overline">Staten Island Software · Jenkins HQ</p>
+<h1>Privacy Policy</h1>
+<p class="muted">Last updated November 21, 2026</p>
+
+<h2>Who this policy applies to</h2>
+<p>This policy covers the customer inquiry, transactional notification, and optional consent-based marketing SMS/MMS programs operated by <strong>Staten Island Software / Jenkins HQ</strong> (operated by {siteConfig.ownerName}). See also our main <a href="/privacy">Staten Island Software Privacy Policy</a>.</p>
+
+<h2>Information collected</h2>
+<p>When you voluntarily submit our contact or SMS opt-in form, we collect your name, email address, optional mobile phone number, business name, service inquiry, and your separate unchecked SMS consent selections (transactional/support updates and/or optional marketing updates). Our backend stores auditable consent timestamps, consent form source URL, disclosure version identifier, campaign scope, and opt-out status.</p>
+
+<h2>How information is used</h2>
+<p>We use this information to respond to customer support requests, deliver order confirmations and fulfillment updates, send appointment reminders, share optional product updates if you explicitly opted in to marketing SMS, and maintain compliance and opt-out suppression records.</p>
+
+<h2>Mobile information and SMS consent non-sharing</h2>
+<p><strong>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. All the above categories exclude text messaging originator opt-in data and consent; this information will not be shared with any third parties.</strong></p>
+<p>We transmit messaging data solely to our telecommunications carrier and hosting processors (including SignalWire and Netlify) strictly as required to deliver messages you requested, process delivery receipts, and enforce STOP/HELP compliance.</p>
+
+<h2>Your choices and support</h2>
+<p>SMS opt-in is completely optional and is never a condition of purchase. Reply <strong>STOP</strong> to opt out of all text messages at any time, <strong>START</strong> to re-subscribe, or <strong>HELP</strong> for assistance. To request data access, correction, or deletion, contact customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>{hasPhone ? ` or call ${siteConfig.phone}` : ''}.</p>
+
+<h2>Retention and security</h2>
+<p>Consent and opt-out records are retained as required to honor your communication preferences and meet carrier compliance obligations. Information is protected with TLS encryption and access-controlled backend storage.</p>
+
+<h2>Policy updates</h2>
+<p>We may update this policy as our services or regulatory requirements evolve and will revise the date above. Questions may be sent to <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or submitted through our <a href="/jenkinshq/sms">SMS opt-in &amp; support form</a>.</p>
 </SMSLayout>
