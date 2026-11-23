@@ -2,8 +2,8 @@
 import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../config/site';
 
-const title = `Terms of Use & Pricing Disclaimers | ${siteConfig.businessName}`;
-const description = 'Website terms of use and transparent pricing disclaimers for Staten Island Software.';
+const title = `Terms of Use & SMS Messaging Terms | ${siteConfig.businessName}`;
+const description = `Website terms of service, SMS messaging terms, and transparent pricing disclaimers for ${siteConfig.businessName}.`;
 ---
 
 <Layout title={title} description={description}>
@@ -12,13 +12,13 @@ const description = 'Website terms of use and transparent pricing disclaimers fo
       <div class="legal-header">
         <span class="section-tag">Terms & Conditions</span>
         <h1>Terms of Service &amp; SMS Messaging Terms</h1>
-        <p class="last-updated">Last Updated: November 21, 2026</p>
+        <p class="last-updated">Last Updated: November 23, 2026</p>
       </div>
 
       <div class="legal-content card">
         <h2>1. Website Informational Purpose &amp; Acceptance</h2>
         <p>
-          This website is published by <strong>Str3am State LLC</strong> doing business as <strong>Staten Island Software</strong> (including Jenkins HQ software products and services), located at 1016 Manor Road, Staten Island, NY 10314 (principal engineer {siteConfig.ownerName}), to describe software engineering, digital tools, web development, and automation services. By accessing this website or opting in to our communications, you agree to these Terms of Service.
+          This website (<code>https://cloud9saas.com</code>) is published and operated by <strong>{siteConfig.legalEntityName}</strong> under the brand <strong>{siteConfig.businessName}</strong>, located at {siteConfig.registeredAddress} (principal engineer {siteConfig.ownerName}), to describe software engineering, SaaS tools, web development, and automation services. By accessing this website or opting in to our communications, you agree to these Terms of Service.
         </p>
 
         <h2>2. Pricing & Non-Binding Estimates</h2>
@@ -37,12 +37,12 @@ const description = 'Website terms of use and transparent pricing disclaimers fo
 
         <h2>3. Independent Contractual Engagement</h2>
         <p>
-          Submitting a project inquiry or contacting Staten Island Software does not establish an attorney-client, agency, partnership, or binding development relationship. Development work begins only after both parties agree to project specifications and the initial deposit or milestone payment is confirmed.
+          Submitting a project inquiry or contacting {siteConfig.businessName} does not establish an attorney-client, agency, partnership, or binding development relationship. Development work begins only after both parties agree to project specifications and the initial deposit or milestone payment is confirmed.
         </p>
 
         <h2>4. Code Ownership & Intellectual Property</h2>
         <p>
-          Website visitors may not scrape, replicate, or misappropriate the brand assets, trademarked identifiers, or visual assets of Staten Island Software without authorization.
+          Website visitors may not scrape, replicate, or misappropriate the brand assets, trademarked identifiers, or visual assets of {siteConfig.businessName} or {siteConfig.legalEntityName} without authorization.
         </p>
         <p>
           For client engagements, intellectual property ownership of custom source code is granted upon receipt of final payment as detailed in each individual project agreement. Pre-existing software libraries, frameworks, and open-source packages remain subject to their respective licenses.
@@ -50,41 +50,41 @@ const description = 'Website terms of use and transparent pricing disclaimers fo
 
         <h2>5. No Guarantees of Specific Search Engine Rankings</h2>
         <p>
-          While Staten Island Software adheres to modern technical SEO best practices, semantic markup, and Core Web Vitals optimization, I do not guarantee specific numerical search rankings (e.g. "#1 on Google") on any search engine, as search algorithms and regional competitor dynamics are controlled solely by third-party search providers.
+          While {siteConfig.businessName} adheres to modern technical SEO best practices, semantic markup, and Core Web Vitals optimization, I do not guarantee specific numerical search rankings (e.g. "#1 on Google") on any search engine, as search algorithms and regional competitor dynamics are controlled solely by third-party search providers.
         </p>
 
         <h2>6. SMS / Text Messaging Terms &amp; Conditions</h2>
         <p>
-          Staten Island Software / Jenkins HQ offers two optional, consent-based SMS/MMS messaging categories that you may separately opt into on our <a href="/jenkinshq/sms">SMS Opt-In page</a> or <a href="/contact">Contact form</a>:
+          <strong>{siteConfig.businessName}</strong> (operated by {siteConfig.legalEntityName}) offers two optional, consent-based SMS/MMS messaging categories that you may separately opt into on our <a href="/sms">SMS Opt-In page</a> or <a href="/contact">Contact form</a>:
         </p>
         <ul>
           <li><strong>Customer Service &amp; Transactional Updates:</strong> Responses to support requests, project consultations, order confirmations, digital delivery updates, and appointment reminders.</li>
-          <li><strong>Optional Promotional &amp; Product Updates:</strong> Consent-based announcements of new software tools, product releases, and special offers (sent only if you separately check the promotional opt-in box).</li>
+          <li><strong>Optional Promotional &amp; Product Updates:</strong> Consent-based announcements of new software tools, product releases, and special offers from {siteConfig.businessName} (sent only if you separately check the promotional opt-in box).</li>
         </ul>
         <p>
-          <strong>Consent &amp; Confirmation:</strong> Opting in to SMS is completely optional and is never a condition of purchase. After opting in and once our carrier messaging campaign is active, you will receive a confirmation text message confirming your selected preferences.
+          <strong>Consent &amp; Confirmation:</strong> Opting in to SMS is completely optional and is never a condition of purchase or submitting an inquiry. After opting in and once our carrier messaging campaign is active, you will receive a confirmation text message from {siteConfig.businessName} confirming your selected preferences.
         </p>
         <p>
           <strong>Message Frequency &amp; Rates:</strong> Message frequency varies based on your active service requests or orders (and up to 4 messages per month for optional promotional updates). <strong>Message and data rates may apply.</strong> Consult your wireless carrier for plan details.
         </p>
         <p>
-          <strong>Opt-Out (STOP) &amp; Re-Subscribe (START):</strong> Reply <strong>STOP</strong> at any time to opt out of all Staten Island Software / Jenkins HQ text messages. You will receive one confirmation message and no further texts will be sent unless you reply <strong>START</strong> or submit a new opt-in.
+          <strong>Opt-Out (STOP) &amp; Re-Subscribe (START):</strong> Reply <strong>STOP</strong> (or CANCEL, END, QUIT, UNSUBSCRIBE) at any time to opt out of all {siteConfig.businessName} text messages. You will receive one confirmation message and no further texts will be sent unless you reply <strong>START</strong> or submit a new opt-in.
         </p>
         <p>
-          <strong>Customer Support (HELP):</strong> Reply <strong>HELP</strong> to any text message for assistance, or email customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> (or <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>).
+          <strong>Customer Support (HELP):</strong> Reply <strong>HELP</strong> (or INFO) to any text message for assistance, submit a request on our <a href="/contact">Contact page</a>, call <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a>, or email customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
         </p>
         <p>
-          <strong>Carrier Disclaimer &amp; Privacy:</strong> Wireless carriers are not liable for delayed or undelivered messages. View our <a href="/privacy">Privacy Policy</a> and <a href="/jenkinshq/terms">Jenkins HQ SMS Terms</a> for full details on how we protect your mobile opt-in data.
+          <strong>Carrier Disclaimer &amp; Privacy:</strong> Wireless carriers are not liable for delayed or undelivered messages. View our <a href="/privacy">Privacy Policy</a> for full details on how we protect your mobile opt-in data and never share it with third parties for marketing.
         </p>
 
         <h2>7. Third-Party Services &amp; Dependencies</h2>
         <p>
-          Certain web tools, communications, and automations interface with third-party providers (e.g., SignalWire, Netlify, Stripe, Google Cloud). Staten Island Software is not responsible for carrier delays, outages, or external vendor changes outside our control.
+          Certain web tools, communications, and automations interface with third-party providers (e.g., SignalWire, Netlify, Stripe, Google Cloud). {siteConfig.businessName} is not responsible for carrier delays, outages, or external vendor changes outside our control.
         </p>
 
         <h2>8. Customer Support &amp; Questions</h2>
         <p>
-          For questions regarding these terms or customer support, email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or submit an inquiry via the <a href="/contact">contact page</a>.
+          For questions regarding these terms or customer support, submit an inquiry via the <a href="/contact">contact page</a>, call <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a>, or email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
         </p>
       </div>
     </div>

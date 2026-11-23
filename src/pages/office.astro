@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { siteConfig, hasOwnerLogin } from '../config/site';
 
 const title = `Owner Office Access | ${siteConfig.businessName}`;
-const description = 'Private owner access gateway for Staten Island Software / Jenkins HQ.';
+const description = `Private owner access gateway for ${siteConfig.businessName}.`;
 const targetLoginUrl = hasOwnerLogin ? siteConfig.ownerLoginUrl : '';
 ---
 

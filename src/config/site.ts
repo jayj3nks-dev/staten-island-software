@@ -1,14 +1,17 @@
 /**
- * Central site configuration for Staten Island Software.
+ * Central site configuration for Cloud9 SaaS (operated by Str3am State LLC).
  * 
  * IMPORTANT: To keep the business honest and credible:
+ * - Legal entity name (`Str3am State LLC`) is strictly separated from public brand (`Cloud9 SaaS`).
+ * - Do not represent `Cloud9 SaaS` as a state-registered DBA until formal assumed-name registration is confirmed.
  * - If a value is empty (e.g., contactEmail, phone, fiverrUrl), it will NOT be displayed publicly.
  * - The primary contact method is the working Netlify inquiry form on the /contact page.
- * - Easily edit these fields as your official business accounts are configured.
  */
 
 export interface SiteConfig {
   businessName: string;
+  legalEntityName: string;
+  registeredAddress: string;
   tagline: string;
   heroHeadline: string;
   heroSubhead: string;
@@ -21,6 +24,7 @@ export interface SiteConfig {
   phone: string;
   phoneRaw: string;
   smsConsentEndpoint: string;
+  smsDisclosureVersion: string;
   githubUrl: string;
   fiverrUrl: string;
   linkedInUrl: string;
@@ -108,21 +112,24 @@ export function resolveVerifiedOwnerLoginUrl(
 }
 
 export const siteConfig: SiteConfig = {
-  businessName: 'Staten Island Software',
-  tagline: 'Professional software engineering at practical, accessible pricing.',
+  businessName: 'Cloud9 SaaS',
+  legalEntityName: 'Str3am State LLC',
+  registeredAddress: '1016 Manor Road, Staten Island, NY 10314',
+  tagline: 'Professional software engineering and SaaS solutions at practical, accessible pricing.',
   heroHeadline: 'Software Engineering for Businesses That Need Things to Work',
   heroSubhead:
-    'Staten Island Software builds websites, custom software, automations, integrations, internal tools, and AI-assisted solutions for local and remote clients.',
-  serviceArea: 'Serving Staten Island, NYC, and remote clients.',
-  canonicalUrl: 'https://statenislandsaas.netlify.app',
+    'Cloud9 SaaS builds websites, custom software, automations, integrations, internal tools, and AI-assisted solutions for local and remote clients.',
+  serviceArea: 'Based in Staten Island, NY • Serving NYC & remote clients nationwide.',
+  canonicalUrl: 'https://cloud9saas.com',
   ownerName: 'Jeremi M. Jenkins',
   ownerTitle: 'Software Engineer',
-  contactEmail: 'Jeremi.Jenkins@gmail.com',
-  supportEmail: 'jeremi.jenkins+support@gmail.com',
+  contactEmail: 'contact@cloud9saas.com',
+  supportEmail: 'contact@cloud9saas.com',
   // Dedicated SignalWire business phone only (private owner mobile is NEVER published here)
   phone: '(315) 502-2862',
   phoneRaw: '+13155022862',
   smsConsentEndpoint: 'https://vps-32f425d8.vps.ovh.us/api/public/sms-consent',
+  smsDisclosureVersion: 'cloud9saas-signalwire-v3-2026-11-23',
   githubUrl: 'https://github.com/Jayj3nks',
   fiverrUrl: '',
   linkedInUrl: '',

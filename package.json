@@ -3,7 +3,7 @@
   "type": "module",
   "version": "1.0.0",
   "private": true,
-  "description": "Production website for Staten Island Software",
+  "description": "Production website for Cloud9 SaaS (operated by Str3am State LLC)",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",

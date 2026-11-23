@@ -1,16 +1,16 @@
 ---
 import SMSLayout from '../../../layouts/JenkinsSMSLayout.astro';
-import { siteConfig } from '../../../config/site';
+import { siteConfig, hasPhone } from '../../../config/site';
 ---
-<SMSLayout title="Consent & Inquiry Confirmed" description="Confirmation of your Staten Island Software / Jenkins HQ inquiry and SMS preferences.">
-<p class="overline">Staten Island Software · Jenkins HQ</p>
+<SMSLayout title="Consent & Inquiry Confirmed" description="Confirmation of your Cloud9 SaaS inquiry and SMS preferences." canonicalPath="/sms/thanks/" noindex={true}>
+<p class="overline">{siteConfig.businessName} • Customer Support &amp; Messaging</p>
 <h1>Thank you — your request is confirmed</h1>
 <p>We have received your submission and stored your communication preferences with timestamp and consent source in our system.</p>
 <p id="consent-receipt-box" style="padding:0.85rem 1rem;border-radius:8px;border:1px solid #334155;background:#0f172a;font-size:0.95rem;">
-  <strong>Consent confirmation:</strong> If you checked an optional SMS consent box, you will receive a confirmation SMS message from Staten Island Software / Jenkins HQ once our carrier campaign is active. Reply <strong>STOP</strong> at any time to opt out or <strong>HELP</strong> for support. Msg &amp; data rates may apply.
+  <strong>Consent confirmation:</strong> If you checked an optional SMS consent box, you will receive a confirmation SMS message from <strong>{siteConfig.businessName}</strong> once our carrier campaign is active. Reply <strong>STOP</strong> at any time to opt out or <strong>HELP</strong> for support. Msg &amp; data rates may apply.
 </p>
-<p class="muted">Customer support: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> · <a href="/jenkinshq/privacy">Privacy Policy</a> · <a href="/jenkinshq/terms">SMS Terms</a></p>
-<p><a href="/jenkinshq/sms">Return to the SMS Opt-In &amp; Support form</a></p>
+<p class="muted">Customer support: {hasPhone && <><a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a> · </>}<a href="/contact">Web Support Form</a> · <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> · <a href="/privacy">Privacy Policy</a> · <a href="/terms">Terms &amp; SMS Terms</a></p>
+<p><a href="/sms">Return to the SMS Opt-In &amp; Support form</a></p>
 <script>
 const p = new URLSearchParams(window.location.search);
 const receipt = p.get('receipt');

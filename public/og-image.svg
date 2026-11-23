@@ -28,16 +28,11 @@
   <!-- Logo Mark in Header -->
   <g transform="translate(80, 75)">
     <rect width="64" height="64" rx="14" fill="#0b1120" stroke="#1e293b" stroke-width="1.5" />
-    <path d="M14 46 L20 18 L23 18 L25 46" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M50 46 L44 18 L41 18 L39 46" stroke="#38bdf8" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M8 28 Q32 38 56 28" stroke="#2563eb" stroke-width="2.2" stroke-linecap="round"/>
-    <path d="M18 28 L23 28" stroke="#38bdf8" stroke-width="1.5"/>
-    <path d="M41 28 L46 28" stroke="#38bdf8" stroke-width="1.5"/>
-    <path d="M6 46 L58 46" stroke="#475569" stroke-width="2" stroke-linecap="round"/>
-    <path d="M28 35 L26 37 L28 39" stroke="#f8fafc" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M36 35 L38 37 L36 39" stroke="#f8fafc" stroke-width="1.8" stroke-linecap="round"/>
-    <path d="M33 33 L31 41" stroke="#38bdf8" stroke-width="1.8" stroke-linecap="round"/>
-    <text x="84" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5">STATEN ISLAND SOFTWARE</text>
+    <path d="M20 44H45C50.5 44 54.5 39.8 54.5 34.6C54.5 29.8 51 25.9 46.4 25.3C44.9 18.8 39.1 14 32.2 14C24.4 14 18 20.1 17.6 27.8C13.1 28.6 9.8 32.5 9.8 37.2C9.8 41 12.8 44 16.8 44H20Z" stroke="#38bdf8" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M26 30.5L23 33.5L26 36.5" stroke="#f8fafc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M38 30.5L41 33.5L38 36.5" stroke="#f8fafc" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+    <path d="M33.5 28.5L30.5 38.5" stroke="#2563eb" stroke-width="2" stroke-linecap="round" fill="none"/>
+    <text x="84" y="44" fill="#f8fafc" font-family="-apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif" font-size="28" font-weight="700" letter-spacing="-0.5">CLOUD9 SAAS</text>
   </g>
 
   <!-- Main Headline -->

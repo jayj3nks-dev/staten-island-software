@@ -2,16 +2,16 @@
 import SMSLayout from '../../../layouts/JenkinsSMSLayout.astro';
 import { siteConfig, hasPhone } from '../../../config/site';
 ---
-<SMSLayout title="SMS Opt-In & Support" description="Contact Staten Island Software / Jenkins HQ and optionally opt in to customer service or marketing SMS updates.">
-<p class="overline">Staten Island Software · Jenkins HQ</p>
+<SMSLayout title="SMS Opt-In & Support" description="Contact Cloud9 SaaS and optionally opt in to customer service or promotional SMS updates." canonicalPath="/sms/" noindex={true}>
+<p class="overline">{siteConfig.businessName} • Customer Support &amp; Messaging</p>
 <h1>Customer Support &amp; Optional SMS Opt-In</h1>
-<p>Contact <strong>Str3am State LLC d/b/a Staten Island Software / Jenkins HQ</strong> (1016 Manor Road, Staten Island, NY 10314) about a customer service request, order update, consultation, or software project. You may separately opt in to text notifications below. <strong>SMS consent is optional and is never required to submit this form or purchase any product or service.</strong></p>
+<p>Contact <strong>{siteConfig.businessName}</strong> (operated by <strong>{siteConfig.legalEntityName}</strong>, {siteConfig.registeredAddress}) about a customer service request, order update, consultation, or software project. You may separately opt in to text notifications below. <strong>SMS consent is optional and is never required to submit this form or purchase any product or service.</strong></p>
 
 <div id="consent-status-banner" hidden role="status" style="margin:1rem 0;padding:1rem;border-radius:8px;border:1px solid #10b981;background:#064e3b;color:#ecfdf5;"></div>
 
-<form id="jenkinshq-sms-form" name="jenkinshq-sms-optin" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/jenkinshq/sms/thanks" data-backend-endpoint={siteConfig.smsConsentEndpoint}>
+<form id="jenkinshq-sms-form" name="jenkinshq-sms-optin" method="POST" action="/sms/thanks" data-backend-endpoint={siteConfig.smsConsentEndpoint}>
   <input type="hidden" name="form-name" value="jenkinshq-sms-optin"/>
-  <input type="hidden" name="consent-language-version" value="jenkinshq-signalwire-v2-2026-11-21"/>
+  <input type="hidden" name="consent-language-version" value={siteConfig.smsDisclosureVersion}/>
   <p style="display:none"><label>Leave blank <input name="bot-field" tabindex="-1" autocomplete="off"/></label></p>
   <div class="panel">
     <label for="customer-name">Full name *</label>
@@ -36,7 +36,7 @@ import { siteConfig, hasPhone } from '../../../config/site';
         <input id="customer-optin" type="checkbox" name="sms_opt_in" value="yes"/>
         <span>
           <strong>Customer Service, Order Updates &amp; Transactional SMS (Optional):</strong>
-          I agree to receive recurring transactional and customer service text messages from <strong>Staten Island Software / Jenkins HQ</strong> regarding my support requests, order confirmations, fulfillment updates, and appointment reminders. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for help. Consent is not a condition of purchase. View our <a href="/jenkinshq/privacy">Privacy Policy</a> and <a href="/jenkinshq/terms">SMS Terms &amp; Conditions</a>.
+          I agree to receive recurring transactional and customer service text messages from <strong>{siteConfig.businessName}</strong> regarding my support requests, order confirmations, fulfillment updates, and appointment reminders. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for help. Consent is not a condition of purchase or inquiry submission. View our <a href="/privacy">Privacy Policy</a> and <a href="/terms">Terms &amp; SMS Terms</a>.
         </span>
       </label>
 
@@ -44,7 +44,7 @@ import { siteConfig, hasPhone } from '../../../config/site';
         <input id="customer-marketing-optin" type="checkbox" name="sms_marketing_opt_in" value="yes"/>
         <span>
           <strong>Promotional &amp; Product Release SMS (Optional):</strong>
-          I separately agree to receive consent-based marketing and product announcement text messages from <strong>Staten Island Software / Jenkins HQ</strong> (up to 4 messages/month). Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for help. Consent is not a condition of purchase. Mobile opt-in data is never shared with third parties or affiliates for marketing.
+          I separately agree to receive consent-based marketing and product announcement text messages from <strong>{siteConfig.businessName}</strong> (up to 4 messages/month). Message and data rates may apply. Reply <strong>STOP</strong> to opt out at any time or <strong>HELP</strong> for help. Consent is not a condition of purchase. Mobile opt-in data is never shared with third parties or affiliates for marketing.
         </span>
       </label>
     </fieldset>
@@ -53,9 +53,7 @@ import { siteConfig, hasPhone } from '../../../config/site';
     <button id="sms-submit-btn" type="submit">Submit Request &amp; Save Preferences</button>
     <p class="muted">
       You can submit your inquiry without checking either SMS box.
-      Customer Support: <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>
-      {hasPhone ? ` · Business Phone: ${siteConfig.phone}` : ''}
-      · <a href="/terms">Terms of Service</a> · <a href="/privacy">Privacy Policy</a>.
+      Customer Support: {hasPhone && <><a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a> · </>}<a href="/contact">Web Support Form</a> · <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> · <a href="/terms">Terms of Service</a> · <a href="/privacy">Privacy Policy</a>.
     </p>
   </div>
 </form>
@@ -89,7 +87,6 @@ form?.addEventListener('submit', async (event) => {
   const formData = new FormData(form);
   let receiptId = '';
 
-  // 1. Persist auditable consent record directly to Jenkins HQ backend CRM
   if (endpoint) {
     try {
       const apiRes = await fetch(endpoint, {
@@ -104,7 +101,7 @@ form?.addEventListener('submit', async (event) => {
           transactional_opt_in: txChecked,
           marketing_opt_in: mktChecked,
           consent_source: window.location.href,
-          disclosure_version: String(formData.get('consent-language-version') || 'jenkinshq-signalwire-v2-2026-11-21'),
+          disclosure_version: String(formData.get('consent-language-version') || 'cloud9saas-signalwire-v3-2026-11-23'),
           bot_field: String(formData.get('bot-field') || '')
         })
       });
@@ -117,7 +114,6 @@ form?.addEventListener('submit', async (event) => {
     }
   }
 
-  // 2. Also submit to Netlify Forms so inquiry is archived on Netlify
   try {
     await fetch('/', {
       method: 'POST',
@@ -132,7 +128,7 @@ form?.addEventListener('submit', async (event) => {
   if (receiptId) qs.set('receipt', receiptId);
   if (txChecked) qs.set('tx', '1');
   if (mktChecked) qs.set('mkt', '1');
-  window.location.href = '/jenkinshq/sms/thanks' + (qs.toString() ? `?${qs.toString()}` : '');
+  window.location.href = '/sms/thanks' + (qs.toString() ? `?${qs.toString()}` : '');
 });
 </script>
 </SMSLayout>

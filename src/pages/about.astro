@@ -4,8 +4,8 @@ import HowIWork from '../components/HowIWork.astro';
 import TrustSection from '../components/TrustSection.astro';
 import { siteConfig } from '../config/site';
 
-const title = `About Staten Island Software | Independent Software Engineering`;
-const description = 'Learn about Staten Island Software: an independent software engineering practice providing practical websites, custom tools, and automations for NYC and remote clients.';
+const title = `About ${siteConfig.businessName} | Independent Software Engineering`;
+const description = `Learn about ${siteConfig.businessName}: an independent software engineering and SaaS practice providing practical websites, custom tools, and automations for NYC and remote clients.`;
 ---
 
 <Layout title={title} description={description}>
@@ -16,7 +16,7 @@ const description = 'Learn about Staten Island Software: an independent software
           <span class="section-tag">Independent Engineering Practice</span>
           <h1>Practical Software Engineering for Real Business Problems</h1>
           <p class="about-lead">
-            Staten Island Software provides direct, independent software engineering for businesses, entrepreneurs, and organizations. Projects range from responsive websites and automations to custom internal tools and system integrations.
+            {siteConfig.businessName} provides direct, independent software engineering for businesses, entrepreneurs, and organizations. Projects range from responsive websites and automations to custom internal tools and system integrations.
           </p>
           <div class="about-meta-pills">
             <span class="meta-pill">
@@ -57,7 +57,7 @@ const description = 'Learn about Staten Island Software: an independent software
             When you work with a traditional digital agency, a significant portion of your budget goes to account managers, junior handoffs, and operational overhead. Communication gets diluted, timelines drag out, and the person writing the code rarely understands the nuance of your business problem.
           </p>
           <p>
-            At Staten Island Software, you collaborate directly with an engineer. From initial requirements gathering and scope definition to development, testing, and deployment, you have a single point of technical accountability.
+            At {siteConfig.businessName}, you collaborate directly with an engineer. From initial requirements gathering and scope definition to development, testing, and deployment, you have a single point of technical accountability.
           </p>
         </div>
 

@@ -3,7 +3,7 @@ import Layout from '../layouts/Layout.astro';
 import { siteConfig } from '../config/site';
 
 const title = `Privacy Policy | ${siteConfig.businessName}`;
-const description = 'Plain-language privacy policy explaining how project inquiries and contact information are handled at Staten Island Software.';
+const description = `Plain-language privacy policy explaining how project inquiries, customer data, and optional SMS consent are handled at ${siteConfig.businessName}.`;
 ---
 
 <Layout title={title} description={description}>
@@ -12,13 +12,13 @@ const description = 'Plain-language privacy policy explaining how project inquir
       <div class="legal-header">
         <span class="section-tag">Privacy Information</span>
         <h1>Privacy Policy</h1>
-        <p class="last-updated">Last Updated: November 21, 2026</p>
+        <p class="last-updated">Last Updated: November 23, 2026</p>
       </div>
 
       <div class="legal-content card">
         <h2>1. Overview</h2>
         <p>
-          Staten Island Software (operating Jenkins HQ digital products and customer communications) is operated by <strong>Str3am State LLC</strong> (1016 Manor Road, Staten Island, NY 10314; principal engineer {siteConfig.ownerName}). This Privacy Policy explains how Str3am State LLC d/b/a Staten Island Software collects, uses, stores, and safeguards personal information submitted through our website, contact forms, customer support requests, and optional SMS/MMS messaging programs.
+          <strong>{siteConfig.businessName}</strong> is operated by <strong>{siteConfig.legalEntityName}</strong> ({siteConfig.registeredAddress}; principal engineer {siteConfig.ownerName}). This Privacy Policy explains how {siteConfig.legalEntityName} (operating {siteConfig.businessName}) collects, uses, stores, and safeguards personal information submitted through our website (<code>https://cloud9saas.com</code>), contact forms, customer support requests, and optional SMS/MMS messaging programs.
         </p>
 
         <h2>2. Information Collected</h2>
@@ -55,7 +55,7 @@ const description = 'Plain-language privacy policy explaining how project inquir
 
         <h2>5. Your Choices, Opt-Out &amp; Support</h2>
         <p>
-          You may opt out of SMS messages at any time by replying <strong>STOP</strong> to any message from us, or reply <strong>HELP</strong> for assistance. You may also manage preferences or request access, correction, or deletion of your data by emailing customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>, or via our <a href="/jenkinshq/sms">SMS Opt-In &amp; Support page</a>.
+          You may opt out of SMS messages at any time by replying <strong>STOP</strong> to any message from us, or reply <strong>HELP</strong> for assistance. You may also manage preferences or request access, correction, or deletion of your data via our <a href="/contact">Contact page</a>, by calling <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a>, by emailing customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>, or via our <a href="/sms">SMS Opt-In &amp; Support page</a>.
         </p>
 
         <h2>6. Cookies &amp; Tracking Technologies</h2>
@@ -70,7 +70,7 @@ const description = 'Plain-language privacy policy explaining how project inquir
 
         <h2>8. Related Policies &amp; Contact</h2>
         <p>
-          For full text messaging disclosures, see our <a href="/terms">Terms of Service &amp; SMS Messaging Terms</a>, <a href="/jenkinshq/terms">Jenkins HQ SMS Terms</a>, and <a href="/jenkinshq/privacy">Jenkins HQ SMS Privacy Policy</a>. For support inquiries, email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or use the <a href="/contact">contact form</a>.
+          For full text messaging disclosures, see our <a href="/terms">Terms of Service &amp; SMS Messaging Terms</a> and <a href="/sms">SMS Opt-In &amp; Support page</a>. For support inquiries, use our <a href="/contact">contact form</a>, call <a href={`tel:${siteConfig.phoneRaw}`}>{siteConfig.phone}</a>, or email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.
         </p>
       </div>
     </div>

@@ -1,6 +1,6 @@
-# Staten Island Software — Production Website
+# Cloud9 SaaS — Production Website
 
-Production website for **Staten Island Software**, an independent freelance software engineering practice delivering practical websites, custom software, business automations, and API integrations for Staten Island, New York City, and remote clients.
+Production website for **Cloud9 SaaS** (operated by **Str3am State LLC**), an independent software engineering and SaaS practice delivering practical websites, custom software, business automations, and API integrations at `https://cloud9saas.com`.
 
 Built with **Astro + TypeScript**, vanilla CSS design system, Netlify Forms, and pre-configured continuous deployment.
 
@@ -130,12 +130,12 @@ Add a new object to the `projects` array in `src/data/projects.ts`:
 The contact form on `/contact` is wired directly to **Netlify Forms**:
 - Form Name: `project-inquiry`
 - Attributes: `data-netlify="true"`, `data-netlify-honeypot="bot-field"`
-- Email Subject: `New Staten Island Software project inquiry`
+- Email Subject: `New Cloud9 SaaS project inquiry`
 - Client-Side Validation: Automatically intercepts submission with `fetch()`, verifies required fields (`name`, `email`, `description`), displays a loading spinner, and renders a clean success banner.
 
 ### Where Form Submissions Appear
 1. Log into your Netlify dashboard at [app.netlify.com](https://app.netlify.com).
-2. Select your site.
+2. Select your site (`statenislandsaas` / `cloud9saas.com`).
 3. Click the **Forms** tab.
 4. All incoming inquiries with name, email, budget, service category, timeline, and description will be listed there.
 
@@ -143,8 +143,8 @@ The contact form on `/contact` is wired directly to **Netlify Forms**:
 1. In the Netlify site dashboard, go to **Site configuration > Notifications**.
 2. Click **Add notification > Email notification**.
 3. Event: Select **New form submission**.
-4. Form: Select `project-inquiry`.
-5. Enter your destination email address: `Jeremi.Jenkins@gmail.com`.
+4. Form: Select `project-inquiry` (and `jenkinshq-sms-optin` if desired).
+5. Enter your verified destination email address (e.g., `contact@cloud9saas.com` once send/receive is verified).
 6. Save. Every new lead will instantly be emailed to you with the submitter's email pre-configured in `Reply-To`.
 
 ---
@@ -155,7 +155,7 @@ The site is configured for zero-configuration Git-based deployment:
 - **Build command:** `npm run build`
 - **Publish directory:** `dist`
 - **Config file:** `netlify.toml`
-- **Live Netlify URL:** `https://statenislandsaas.netlify.app`
+- **Primary Production URL:** `https://cloud9saas.com` (Netlify project: `statenislandsaas`)
 
 ### Linking to Netlify
 1. Log into Netlify at [app.netlify.com](https://app.netlify.com).

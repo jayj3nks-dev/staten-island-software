@@ -2,13 +2,13 @@
 import SMSLayout from '../../layouts/JenkinsSMSLayout.astro';
 import { siteConfig, hasPhone } from '../../config/site';
 ---
-<SMSLayout title="Privacy Policy" description="Staten Island Software / Jenkins HQ privacy practices and SMS consent handling.">
-<p class="overline">Staten Island Software · Jenkins HQ</p>
-<h1>Privacy Policy</h1>
-<p class="muted">Last updated November 21, 2026</p>
+<SMSLayout title="SMS Privacy Policy" description="Cloud9 SaaS privacy practices and SMS consent handling." canonicalPath="/privacy/" noindex={true}>
+<p class="overline">{siteConfig.businessName} • Privacy &amp; Messaging</p>
+<h1>SMS Privacy Policy</h1>
+<p class="muted">Last updated November 23, 2026</p>
 
 <h2>Who this policy applies to</h2>
-<p>This policy covers the customer inquiry, transactional notification, and optional consent-based marketing SMS/MMS programs operated by <strong>Str3am State LLC d/b/a Staten Island Software / Jenkins HQ</strong> (1016 Manor Road, Staten Island, NY 10314; {siteConfig.ownerName}). See also our main <a href="/privacy">Staten Island Software Privacy Policy</a>.</p>
+<p>This policy covers the customer inquiry, transactional notification, and optional consent-based marketing SMS/MMS programs operated by <strong>{siteConfig.businessName}</strong> (a brand operated by <strong>{siteConfig.legalEntityName}</strong>, {siteConfig.registeredAddress}; principal engineer {siteConfig.ownerName}). See also our full <a href="/privacy">{siteConfig.businessName} Privacy Policy</a>.</p>
 
 <h2>Information collected</h2>
 <p>When you voluntarily submit our contact or SMS opt-in form, we collect your name, email address, optional mobile phone number, business name, service inquiry, and your separate unchecked SMS consent selections (transactional/support updates and/or optional marketing updates). Our backend stores auditable consent timestamps, consent form source URL, disclosure version identifier, campaign scope, and opt-out status.</p>
@@ -21,11 +21,11 @@ import { siteConfig, hasPhone } from '../../config/site';
 <p>We transmit messaging data solely to our telecommunications carrier and hosting processors (including SignalWire and Netlify) strictly as required to deliver messages you requested, process delivery receipts, and enforce STOP/HELP compliance.</p>
 
 <h2>Your choices and support</h2>
-<p>SMS opt-in is completely optional and is never a condition of purchase. Reply <strong>STOP</strong> to opt out of all text messages at any time, <strong>START</strong> to re-subscribe, or <strong>HELP</strong> for assistance. To request data access, correction, or deletion, contact customer support at <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or <a href={`mailto:${siteConfig.contactEmail}`}>{siteConfig.contactEmail}</a>{hasPhone ? ` or call ${siteConfig.phone}` : ''}.</p>
+<p>SMS opt-in is completely optional and is never a condition of purchase. Reply <strong>STOP</strong> to opt out of all text messages at any time, <strong>START</strong> to re-subscribe, or <strong>HELP</strong> for assistance. To request data access, correction, or deletion, contact customer support via our <a href="/contact">web support form</a>{hasPhone ? `, call ${siteConfig.phone},` : ''} or email <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.</p>
 
 <h2>Retention and security</h2>
 <p>Consent and opt-out records are retained as required to honor your communication preferences and meet carrier compliance obligations. Information is protected with TLS encryption and access-controlled backend storage.</p>
 
 <h2>Policy updates</h2>
-<p>We may update this policy as our services or regulatory requirements evolve and will revise the date above. Questions may be sent to <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a> or submitted through our <a href="/jenkinshq/sms">SMS opt-in &amp; support form</a>.</p>
+<p>We may update this policy as our services or regulatory requirements evolve and will revise the date above. Questions may be submitted through our <a href="/contact">contact form</a>, <a href="/sms">SMS opt-in &amp; support form</a>, or emailed to <a href={`mailto:${siteConfig.supportEmail}`}>{siteConfig.supportEmail}</a>.</p>
 </SMSLayout>

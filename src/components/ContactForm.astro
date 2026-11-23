@@ -1,5 +1,5 @@
 ---
-// ContactForm.astro - Production Netlify + Jenkins HQ Backend Consent form with interactive validation
+// ContactForm.astro - Production Netlify + Cloud9 SaaS Backend Consent form with interactive validation
 import { siteConfig } from '../config/site';
 ---
 
@@ -42,8 +42,8 @@ import { siteConfig } from '../config/site';
   >
     <!-- Hidden fields for Netlify Forms & email subject -->
     <input type="hidden" name="form-name" value="project-inquiry" />
-    <input type="hidden" name="subject" value="New Staten Island Software project inquiry" />
-    <input type="hidden" name="consent-language-version" value="jenkinshq-signalwire-v2-2026-11-21" />
+    <input type="hidden" name="subject" value={`New ${siteConfig.businessName} project inquiry`} />
+    <input type="hidden" name="consent-language-version" value={siteConfig.smsDisclosureVersion} />
     <input type="hidden" id="contact-backend-endpoint" value={siteConfig.smsConsentEndpoint} />
 
     <!-- Spam Protection Honeypot -->
@@ -227,13 +227,13 @@ import { siteConfig } from '../config/site';
       <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.84rem;line-height:1.5;color:var(--text-secondary);cursor:pointer;margin-bottom:0.65rem;">
         <input type="checkbox" id="contact-sms-tx" name="sms_opt_in" value="yes" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;" />
         <span>
-          I agree to receive recurring customer service, consultation, and order update text messages from <strong>Staten Island Software / Jenkins HQ</strong>. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Consent is not a condition of purchase. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">SMS Terms</a>.
+          I agree to receive recurring customer service, consultation, and order update text messages from <strong>{siteConfig.businessName}</strong>. Message frequency varies. Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Consent is not a condition of purchase or submitting an inquiry. See our <a href="/privacy">Privacy Policy</a> and <a href="/terms">SMS Terms</a>.
         </span>
       </label>
       <label style="display:flex;align-items:flex-start;gap:0.6rem;font-size:0.84rem;line-height:1.5;color:var(--text-secondary);cursor:pointer;">
         <input type="checkbox" id="contact-sms-mkt" name="sms_marketing_opt_in" value="yes" style="margin-top:3px;width:16px;height:16px;flex-shrink:0;" />
         <span>
-          I separately agree to receive optional promotional and product release text messages from <strong>Staten Island Software / Jenkins HQ</strong> (up to 4 msgs/month). Msg &amp; data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Mobile opt-in data is never shared with third parties for marketing.
+          I separately agree to receive optional promotional and product release text messages from <strong>{siteConfig.businessName}</strong> (up to 4 msgs/month). Message and data rates may apply. Reply <strong>STOP</strong> to opt out or <strong>HELP</strong> for help. Consent is not a condition of purchase. Mobile opt-in data is never shared with third parties for marketing.
         </span>
       </label>
       <span class="field-error" id="sms-phone-error" role="alert" hidden>Please enter a valid 10-digit US phone number above if opting in to SMS updates.</span>
@@ -538,7 +538,7 @@ import { siteConfig } from '../config/site';
               transactional_opt_in: smsTx,
               marketing_opt_in: smsMkt,
               consent_source: window.location.href,
-              disclosure_version: String(formData.get('consent-language-version') || 'jenkinshq-signalwire-v2-2026-11-21'),
+              disclosure_version: String(formData.get('consent-language-version') || 'cloud9saas-signalwire-v3-2026-11-23'),
               bot_field: String(formData.get('bot-field') || '')
             })
           }).catch(() => {});

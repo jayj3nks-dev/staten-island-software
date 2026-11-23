@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://statenislandsaas.netlify.app/sitemap-index.xml
+Sitemap: https://cloud9saas.com/sitemap-index.xml
